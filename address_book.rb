@@ -1,7 +1,6 @@
 require_relative 'address_entry'
 
 $book = Array.new
-cs = Hash.new(0)
 cs = {
   'list'   => -> {List()},
 	'write'  => -> {Write()},
