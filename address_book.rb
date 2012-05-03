@@ -4,7 +4,8 @@ $book = Array.new
 cs = {
   'list' => -> {List()},
 	'write'=> -> {Write()},
-  'exit' => -> {Exit()}
+  'exit' => -> {Exit()},
+	'remove' => ->{Remove()}
 }
 
 #This reads file
@@ -13,6 +14,14 @@ File.open('book.txt') do |f|
   count.times do
     $book << AddressEntry.new(f.gets.delete("\n"), f.gets.delete("\n"))
   end
+end
+
+def Add 
+	print "Enter your full name: "
+	name = gets.chop
+	print "Enter your address: "
+	addr = gets.chop
+	$book << AddressEntry.new(name, addr)
 end
 
 def List
