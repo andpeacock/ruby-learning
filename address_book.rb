@@ -1,22 +1,26 @@
-require 'address_entry'
+require_relative 'address_entry'
 
+book = Array.new
 
-File.open('book.txt') do |file|
-	count = file.readlines.size
-	puts count
+#This reads file
+File.open('book.txt') do |f|
+  count = f.gets.chop.to_i
+  count.times do
+    book << AddressEntry.new(f.gets.delete("\n"), f.gets.delete("\n"))
+  end
 end
 
+=begin
+#Check file size
+File.open('book.txt') do |r|
+  $count = r.readlines.size/2
+  r.close
+end
+=end
 
-#entries = gets.to_i
-#book = Array.new
-#entries.times do
-#	book << AddressEntry.new(gets, gets)
-#end
-
-#File.open('output.txt', 'w') do |file|
-#	book.each_index do |i|
-#		file.puts book[i].name
-#		file.puts book[i].address
-#		puts "#{i} Name: #{book[i].name.chop}"
-#	end
-#end
+#This prints entries
+def List(book)
+  book.each_index do |entry|
+    puts "#{entry}: #{book[entry].name} -- #{book[entry].address}"
+  end
+end
