@@ -2,7 +2,7 @@ require 'address_entry'
 
 
 File.open('book.txt') do |file|
-	count = %x{wc -l #{file}}.to_i
+	count = file.readlines.size
 	puts count
 end
 
